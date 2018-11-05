@@ -1,0 +1,53 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style2.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap.min.css' %}">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style2.css' %}">
+    </head>
+    <body>
+        <div class="mb">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container">
+                          
+                        <strong><a class="navbar-brand" href="/">Buxchange</a></strong>
+                        
+                        <div class="float-right">
+                            <a href="{% url 'dashboard' %}" class="badge badge-light"> {{ user.username }} </a>
+                            <a href="{% url 'logout' %}" class="badge badge-light">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+        </div>
+        {% if not result %}
+        <br>
+        <div class="alert alert-dark" role="alert">
+               No items found
+        </div>
+        {% endif %}
+        <div class="picture-grid p2">
+            {% for i in result %}
+           
+            <div class="card grid-box" style="width: 18rem;">
+                    {% if not i.book_url %}
+                   
+                    <img class="card-img-top" src="{{ media_url }}/images/no-image.png" alt="Book img">
+                   
+                    {% else %}
+                    <img class="card-img-top" src="{{ media_url }}{{ i.book_url }}" alt="Book img">
+                    {% endif %}
+                    <div class="card-body">
+                      <h5 class="card-title">{{ i.name }}</h5>
+                      <!-- <p class="card-text"></p> -->
+                      <a href="../user/{{ i.upload_id.id }}" class="btn btn-secondary">Contact seller</a>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </body>
+</html>

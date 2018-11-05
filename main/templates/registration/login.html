@@ -1,0 +1,63 @@
+{% extends "main/layout.html" %}
+
+{% block body %}
+<div class="container w-25">
+        <main role="main">
+                <section class="jumbotron text-center">
+                    <!-- <form class="form-signin" action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <h2 class="form-signin-heading">Please sign in</h2>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <br>
+                        <button class="btn btn-sm btn-secondary btn-block" type="submit">Sign in</button>
+                        <br>
+                        <h6>OR</h6>
+                        <h6>Create a new account</h6>
+                        <a class="btn btn-secondary" role="button" href="/signup">Sign up</a>
+                    </form> -->
+
+                    <!-- <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+
+                        <input type="submit" value="login">
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </form> -->
+                    <form role="form" class="form-horizontal" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" placeholder="username" type="text" />
+                                        {% if form.username.errors %}
+                                        <div class="alert alert-dark" role="alert">
+                                           {{ form.username.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="input-group">
+                                            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="30" name="{{ form.password.html_name }}" placeholder="password" type="password" />  
+                                            {% if form.password.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                                {{ form.password.errors }}
+                                            </div>
+                                            {% endif %}
+                                    </div>
+                                 <br>   
+                                <input type="submit" class="btn btn-secondary" value="Login" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                    </form>
+                </section>
+        </main>
+</div>
+
+
+{% endblock %}

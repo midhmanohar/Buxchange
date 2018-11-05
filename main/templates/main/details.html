@@ -1,0 +1,42 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style2.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap.min.css' %}">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style2.css' %}">
+    </head>
+    <body>
+        <div class="mb">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container">
+                          
+                        <strong><a class="navbar-brand" href="/">Buxchange</a></strong>
+                        
+                        <div class="float-right">
+                            <a href="{% url 'dashboard' %}" class="badge badge-light"> {{ user.username }} </a>
+                            <a href="{% url 'logout' %}" class="badge badge-light">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+        </div>
+
+        <div class="container-fluid text-center">
+                <main role="main">
+                    <section class="jumbotron text-center">
+                        <div class="container">
+                            <h1 class="jumbotron-heading">Seller Profile</h1>
+                            <ul class="list-group">
+                                    <li class="list-group-item">Username : {{ user }}</li>
+                                    <li class="list-group-item">Phone : {{ student.phone }}</li>
+                            </ul>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "main/layout.html" %}
+
+{% if user %}
+    {% block right %}
+    <a href="{% url 'dashboard' %}" class="badge badge-light"> {{  user.username }} </a>
+    <a href="{% url 'logout' %}" class="badge badge-light">Logout</a>
+    {% endblock %}
+{% endif %}
+{% block body %}
+<div class="container-fluid text-center">
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Welcome to buxchange</h1>
+                <p class="lead text-muted">Buy and sell books from other students using Buxchange</p>
+                <p class="lead text-muted">Give books away.Get books you want</p>
+                <p>
+                <a href="{% url 'findBooks' %}" class="btn btn-secondary my-2">Find Books</a>
+                <a href="{% url 'upload' %}" class="btn btn-secondary my-2">Upload Books</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

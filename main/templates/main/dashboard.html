@@ -1,0 +1,58 @@
+{% extends "main/layout.html" %}
+
+{% if user %}
+    {% block right %}
+    <a href="{% url 'dashboard' %}" class="badge badge-light"> {{ user.username }} </a>
+    <a href="{% url 'logout' %}" class="badge badge-light">Logout</a>
+    {% endblock %}
+{% endif %}
+{% block body %}
+<div class="container-fluid text-center">
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                {% if student.phone %}
+                    <ul class="list-group">
+                            <li class="list-group-item">Username : {{ student.username }}</li>
+                            <li class="list-group-item">Phone : {{ student.phone }}</li>
+                    </ul>
+                    <br>
+                    <a class="btn btn-secondary" href="{% url 'result' %}" role="button">Your Books</a>
+                {% endif %}
+                {% if not student.phone %}
+                <h2>Edit Profile</h2>
+                <script type="text/javascript">
+                    alert("Add phone number to upload books")
+                </script>
+                    <form role="form" class="form-horizontal" method="post" action="{% url 'dashboard' %}">
+                            {% csrf_token %}
+                                <div class="form-group">
+        
+                                        <div class="input-group">
+                                            {{ form.username }}
+                                            {% if form.username.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                               {{ form.username.errors }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            {{ form.phone }}
+                                            {% if form.phone.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.phone.errors }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                     <br>   
+                                    <input type="submit" class="btn btn-secondary" value="Update" />
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </div>
+                        </form>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+ <!-- <div class="grid-box"><img src="{{ media_url }}{{ i.book_url }}" /><h6>{{ i.name }}</h6><a href="{% url 'user' i.upload_id.id %}">{{ i.upload_id }}</a></div> -->
