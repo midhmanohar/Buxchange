@@ -23,31 +23,33 @@
                     <input type="submit" value="Find">
                     <input type="hidden" name="next" value="{{ next }}" />
                 </form> -->
-                <form role="form" class="form-horizontal" method="post" action="{% url 'findBooks' %}">
-                    {% csrf_token %}
-                        <div class="form-group">
-                                <div class="input-group">
-                                    {{ form.branch_name }}
-                                    {% if form.branch_name.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                           {{ form.branch_name.errors }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                   {{ form.semester }}
-                                   {% if form.semester.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                           {{ form.semester.errors }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                             <br>   
-                            <input type="submit" class="btn btn-secondary" value="Find" />
-                            <input type="hidden" name="next" value="{{ next }}" />
-                        </div>
-                </form>
+                <div class="container w-50">
+                    <form role="form" class="form-horizontal" method="post" action="{% url 'findBooks' %}">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                    <div class="input-group">
+                                        {{ form.branch_name }}
+                                        {% if form.branch_name.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.branch_name.errors }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                    {{ form.semester }}
+                                    {% if form.semester.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.semester.errors }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                <br>   
+                                <input type="submit" class="btn btn-secondary" value="Find" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>

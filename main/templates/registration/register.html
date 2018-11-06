@@ -1,7 +1,7 @@
 {% extends "main/layout.html" %}
 
 {% block body %}
-<div class="container w-25">
+<div class="container-fluid">
         <main role="main">
                 <section class="jumbotron text-center">
                     <!-- <form name="signUpForm" class="form-signup" action='/' method='post'>
@@ -18,42 +18,46 @@
                     <br>
                     <button class="btn btn-sm btn-secondary btn-block" type="submit">Sign up</button>
                     </form> -->
-                    <form role="form" class="form-horizontal" method="post" action="{% url 'register' %}">
-                        {% csrf_token %}
-                            <div class="form-group">
-    
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" placeholder="username" type="text" />
-                                        {% if form.username.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                           {{ form.username.errors }}
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="input-group">
+                    <div class="container w-50">
+                        <form role="form" class="form-horizontal" method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
+                                <div class="form-group">
+        
+                                        <div class="input-group">
                                             <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input class="form-control" id="{{ form.password1.id_for_label }}" maxlength="30" name="{{ form.password1.html_name }}" placeholder="password" type="password" />  
-                                        {% if form.password1.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                           {{ form.password1.errors }}
+                                            <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" placeholder="Username" type="text" />
+                                            {% if form.username.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.username.errors }}
+                                            </div>
+                                            {% endif %}
                                         </div>
+                                        <br>
+                                        <div class="input-group">
+                                                <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input class="form-control" id="{{ form.password1.id_for_label }}" maxlength="30" name="{{ form.password1.html_name }}" placeholder="Password" type="password" />  
+                                            {% if form.password1.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.password1.errors }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input class="form-control" id="{{ form.password2.id_for_label }}" maxlength="30" name="{{ form.password2.html_name }}" placeholder="Confirm password" type="password" />  
+                                        {% if form.password2.errors %}
+                                            <div class="alert alert-dark" role="alert">
+                                            {{ form.password2.errors }}
+                                            </div>
                                         {% endif %}
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input class="form-control" id="{{ form.password2.id_for_label }}" maxlength="30" name="{{ form.password2.html_name }}" placeholder="confirm password" type="password" />  
-                                    {% if form.password2.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                           {{ form.password2.errors }}
-                                        </div>
-                                    {% endif %}
+                                    <br>   
+                                    <input type="submit" class="btn btn-secondary" value="Register" />
+                                    <input type="hidden" name="next" value="{{ next }}" />
                                 </div>
-                                 <br>   
-                                <input type="submit" class="btn btn-secondary" value="Register" />
-                                <input type="hidden" name="next" value="{{ next }}" />
-                            </div>
-                    </form>
+                        </form>
+                    </div>
                 </section>
         </main>
 </div>

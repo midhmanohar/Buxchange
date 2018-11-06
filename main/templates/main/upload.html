@@ -28,51 +28,52 @@
                     <input type="submit" value="upload">
                     <input type="hidden" name="next" value="{{ next }}" />
                 </form> -->
-                
+                <div class="container w-50">
 
-                <form role="form" class="form-horizontal" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
-                        {% csrf_token %}
-                            <div class="form-group">
-                                    <div class="input-group">
-                                        {{ form.branch_name }}
-                                        {% if form.branch_name.errors %}
-                                            <div class="alert alert-dark" role="alert">
-                                               {{ form.branch_name.errors }}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                       {{ form.semester }}
-                                       {% if form.semester.errors %}
-                                            <div class="alert alert-dark" role="alert">
-                                               {{ form.semester.errors }}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        {{ form.name }}
-                                        {% if form.name.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                            {{ form.name.errors }}
+                    <form role="form" class="form-horizontal" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                        <div class="input-group">
+                                            {{ form.branch_name }}
+                                            {% if form.branch_name.errors %}
+                                                <div class="alert alert-dark" role="alert">
+                                                {{ form.branch_name.errors }}
+                                                </div>
+                                            {% endif %}
                                         </div>
-                                        {% endif %}
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        {{ form.image }}
-                                        {% if form.image.errors %}
+                                        <br>
+                                        <div class="input-group">
+                                        {{ form.semester }}
+                                        {% if form.semester.errors %}
+                                                <div class="alert alert-dark" role="alert">
+                                                {{ form.semester.errors }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            {{ form.name }}
+                                            {% if form.name.errors %}
                                             <div class="alert alert-dark" role="alert">
-                                                {{ form.image.errors }}
+                                                {{ form.name.errors }}
                                             </div>
-                                        {% endif %}
-                                    </div>
-                                 <br>   
-                                <input type="submit" class="btn btn-secondary" value="Upload" />
-                                <input type="hidden" name="next" value="{{ next }}" />
-                            </div>
-                </form>
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            {{ form.image }}
+                                            {% if form.image.errors %}
+                                                <div class="alert alert-dark" role="alert">
+                                                    {{ form.image.errors }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    <br>   
+                                    <input type="submit" class="btn btn-secondary" value="Upload" />
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </div>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
