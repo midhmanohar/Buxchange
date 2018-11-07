@@ -29,6 +29,11 @@
                 <input type="submit" value="login">
                 <input type="hidden" name="next" value="{{ next }}" />
             </form> -->
+            {% if form.errors %}
+                <script>
+                    alert('Please enter a correct username and password.')
+                </script>
+            {% endif %}
             <div class="container w-50">
                 <form role="form" class="form-horizontal" method="post" action="{% url 'login' %}">
                     {% csrf_token %}
@@ -36,21 +41,11 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
                                     <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30" name="{{ form.username.html_name }}" placeholder="Username" type="text" />
-                                    {% if form.username.errors %}
-                                    <div class="alert alert-dark" role="alert">
-                                        {{ form.username.errors }}
-                                    </div>
-                                    {% endif %}
                                 </div>
                                 <br>
                                 <div class="input-group">
                                         <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
                                         <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="30" name="{{ form.password.html_name }}" placeholder="Password" type="password" />  
-                                        {% if form.password.errors %}
-                                        <div class="alert alert-dark" role="alert">
-                                            {{ form.password.errors }}
-                                        </div>
-                                        {% endif %}
                                 </div>
                                 <br>   
                             <input type="submit" class="btn btn-secondary" value="Login" />
